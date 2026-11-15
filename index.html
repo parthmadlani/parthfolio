@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parth Madlani — Full-stack developer building AI-powered products</title>
+    <meta name="description" content="Portfolio of Parth Madlani, a CSE (AI/ML) undergraduate in Ahmedabad who builds full-stack, AI-powered products including Hemzo and Init." />
+    <meta name="author" content="Parth Madlani" />
+    <meta name="theme-color" content="#fbfbf9" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Parth Madlani" />
+    <meta property="og:title" content="Parth Madlani — Full-stack developer building AI-powered products" />
+    <meta property="og:description" content="Portfolio of Parth Madlani, a CSE (AI/ML) undergraduate in Ahmedabad who builds full-stack, AI-powered products including Hemzo and Init." />
+    <meta property="og:image" content="/apple-touch-icon.png" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" as="image" href="/host/host-front.webp" type="image/webp" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Parth Madlani",
+        "jobTitle": "Full-stack developer",
+        "description": "Computer Science Engineering (AI/ML) undergraduate building full-stack, AI-powered products.",
+        "email": "mailto:parthmadlani9825@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Ahmedabad", "addressCountry": "IN" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Adani University" },
+        "sameAs": ["https://github.com/parthmadlani", "https://www.linkedin.com/in/parthmadlani"],
+        "knowsAbout": ["Full-stack web development", "Machine learning", "Time-series forecasting", "Generative AI integration", "React", "Next.js", "Python"]
+      }
+    </script>
+    <style>
+      /* Loading screen. Inline so it paints before any script or stylesheet arrives. */
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: grid;
+        place-items: center;
+        background-color: #fbfbf9;
+        background-image: linear-gradient(rgba(17, 19, 25, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(17, 19, 25, 0.1) 1px, transparent 1px);
+        background-size: 48px 48px;
+        background-position: center;
+        color: #111319;
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        transition: transform 0.75s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.3s ease 0.5s;
+      }
+      #loader.is-done {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loader-box {
+        display: grid;
+        justify-items: center;
+        gap: 18px;
+        padding: 24px;
+      }
+      .loader-mark {
+        width: 96px;
+        height: 96px;
+        position: relative;
+        display: grid;
+        place-items: center;
+        font: 800 30px/1 'Helvetica Neue', Arial, sans-serif;
+        letter-spacing: -0.04em;
+      }
+      .loader-mark svg {
+        position: absolute;
+        inset: 0;
+        overflow: visible;
+      }
+      .loader-mark rect {
+        fill: none;
+        stroke: #1f4bff;
+        stroke-width: 3;
+        stroke-dasharray: 384;
+        stroke-dashoffset: 384;
+        transition: stroke-dashoffset 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .loader-text {
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #474b57;
+      }
+      .loader-count {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        color: #111319;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #loader {
+          transition: opacity 0.2s linear;
+        }
+        #loader.is-done {
+          transform: none;
+        }
+      }
+    </style>
+    <noscript><style>#loader { display: none; }</style></noscript>
+  </head>
+  <body>
+    <div id="loader" role="status" aria-live="polite">
+      <div class="loader-box">
+        <div class="loader-mark" aria-hidden="true">
+          <svg viewBox="0 0 96 96"><rect id="loader-rect" x="0" y="0" width="96" height="96" /></svg>
+          P/M
+        </div>
+        <div class="loader-text">Laying out the canvas</div>
+        <div class="loader-count" id="loader-count" aria-hidden="true">0 / 5</div>
+      </div>
+    </div>
+    <script>
+      // Safety net: if the app never starts, do not leave visitors behind the loading screen.
+      window.__pmLoaderFallback = setTimeout(function () {
+        var l = document.getElementById('loader');
+        if (l) l.remove();
+        document.documentElement.classList.add('pm-ready');
+      }, 9000);
+    </script>
+    <div id="root"></div>
+    <noscript>Parth Madlani — full-stack developer building AI-powered products. Email: parthmadlani9825@gmail.com. This portfolio needs JavaScript for its interactive version.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

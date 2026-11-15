@@ -1,0 +1,137 @@
+/* The host: one fixed element, positioned by hostEngine.ts. */
+.host {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 200px;
+  aspect-ratio: 620 / 936;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  will-change: transform;
+  --host-p: 1;
+}
+.host.is-visible {
+  opacity: calc(0.6 + 0.4 * var(--host-p));
+}
+.host-figure {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 66.8%;
+}
+/* The host waits behind the loading screen and steps in once the page is ready. */
+html:not(.pm-ready) .host-figure {
+  opacity: 0;
+}
+html[data-motion='full'].pm-ready .host--intro .host-figure {
+  animation: host-in 0.9s 0.25s cubic-bezier(0.2, 1.3, 0.3, 1) backwards;
+}
+@keyframes host-in {
+  from {
+    opacity: 0;
+    scale: 0.72;
+    translate: 0 8%;
+  }
+}
+/* Disc: centre at 625/936 of the box height, diameter = box width. */
+.host-disc {
+  position: absolute;
+  left: 0;
+  top: 33.65%;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--host-accent, var(--blue));
+  opacity: var(--host-p);
+  transition: background-color 0.6s ease;
+}
+.host-disc::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  opacity: calc(1 - var(--host-p));
+}
+.host-view {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  user-select: none;
+}
+.host-view.is-on {
+  opacity: 1;
+}
+
+/* Reserved places in page layouts. */
+.host-slot {
+  width: 100%;
+  aspect-ratio: 620 / 936;
+  pointer-events: none;
+}
+.host-slot--quiet {
+  width: 92px;
+}
+
+/* Speech bubble (decorative; its text is also in the page). */
+.host-bubble {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 6;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.host-bubble > span {
+  position: absolute;
+  width: max-content;
+  max-width: min(250px, 42vw);
+  padding: 0.55rem 0.85rem 0.6rem;
+  background: var(--sheet);
+  border: 1.5px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  font-family: var(--hand);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.08;
+  color: var(--ink);
+  opacity: 0;
+  scale: 0.85;
+  transition: opacity 0.2s ease, scale 0.3s cubic-bezier(0.2, 1.4, 0.3, 1);
+}
+.host-bubble.is-on > span {
+  opacity: 1;
+  scale: 1;
+}
+.host-bubble[data-side='left'] > span {
+  right: 0;
+  bottom: 0;
+  border-radius: 14px 14px 2px 14px;
+  transform-origin: 100% 100%;
+}
+.host-bubble[data-side='right'] > span {
+  left: 0;
+  bottom: 0;
+  border-radius: 14px 14px 14px 2px;
+  transform-origin: 0 100%;
+}
+.host-bubble[data-side='top'] > span {
+  left: 0;
+  bottom: 0;
+  translate: -50% 0;
+  border-radius: 14px;
+  transform-origin: 50% 100%;
+}
+@media (max-width: 760px) {
+  .host-bubble > span {
+    font-size: 1.15rem;
+  }
+  .host-slot--quiet {
+    width: 64px;
+  }
+}
